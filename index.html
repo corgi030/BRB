@@ -30,6 +30,7 @@
       text-align: center;
       padding: 80px 20px;
       color: #333;
+      cursor: pointer; /* 提示可點擊 */
     }
 
     img {
@@ -54,10 +55,39 @@
       animation-delay: 0.3s;
       animation-fill-mode: both;
     }
+
+    .notice {
+      font-size: 14px;
+      color: #999;
+      margin-top: 30px;
+    }
+
+    iframe {
+      display: none;
+    }
   </style>
 </head>
-<body>
-  <h1>暫時離開一下</h1>
-  <p>請稍候，台主很快回來 ~🐾</p>
+<body onclick="playMusic()">
+  <h1>我暫時離開一下</h1>
+  <p>請稍候，柯基主人很快回來！🐾</p>
+  <div class="notice">點一下畫面播放背景音樂 🎵</div>
+
+  <!-- 隱藏 YouTube 播放器 -->
+  <iframe id="musicPlayer" width="0" height="0"
+    src=""
+    allow="autoplay"
+    allowfullscreen
+    frameborder="0">
+  </iframe>
+
+  <script>
+    let played = false;
+    function playMusic() {
+      if (played) return;
+      const player = document.getElementById('musicPlayer');
+      player.src = "https://www.youtube.com/embed/XnNjZ2_IB9s?autoplay=1&loop=1&playlist=XnNjZ2_IB9s";
+      played = true;
+    }
+  </script>
 </body>
 </html>
